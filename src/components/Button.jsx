@@ -1,14 +1,25 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-function Button() {
-    const [count, setCount] = useState(0);
-    return (
-        <div>
-            <p>You clicked { count } times</p>
-            <button onClick={() => setCount(count + 1)}>Click me</button>
-        </div>
-    )
+class Button extends React.Component {
+    state = {
+        count: 0
+    }
+
+    handleClick = () => {
+        this.setState({
+            count: this.state.count + 1,
+        })
+    }
+
+    render() {
+        const { count } = this.state;
+        return(
+            <div>
+                <h1>Manzanas: { count } </h1>
+                <button type="button" onClick={this.handleClick}>Agregar</button>
+            </div>
+        )
+    }
 }
 
 export default Button;
-
